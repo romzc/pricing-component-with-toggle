@@ -23,7 +23,7 @@
         },
 
         {
-            "master": "title",
+            "title": "Master",
             "mount": {
                 "year": "399.99",
                 "month": "39.99"

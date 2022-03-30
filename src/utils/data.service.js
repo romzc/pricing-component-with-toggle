@@ -1,7 +1,5 @@
-const fetchData = (url) => {
-    return fetch(url)
-            .then(response => response.json())
-            .catch( error => console.error(error));
-};
+const fetchData = () => {
+    return require('../data/data.json');
+}
 
-export {fetchData};
+export { fetchData };
