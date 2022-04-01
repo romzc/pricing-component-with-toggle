@@ -5,59 +5,61 @@ const containerList = document.querySelectorAll('.container-cards');
 const toggleButton = document.getElementById('check');
 const json = fetchData();
 
-const reRender = ( month ) => {
+const reset = (list, data) => {
     toggleButton.addEventListener('click', (event) => {
-        month = toggleButton.checked;
-        styleCards(containerList, json.data, month)
+        list.forEach(element => {
+            let month = toggleButton.checked;
+            element.classList.remove('focus')
+            render(list, data, month)
+        });
     })
 }
 
-const styleCards = (list, data, month) => {
+const styleCards = (list, data) => {
 
     for( let i = 0; i < list.length; i++) {
-
         list[i].addEventListener('click', () => {
             list[i].classList.toggle('focus');
-            list[i].children[1].classList.toggle('bold');
-            list[i].children[3].classList.toggle('change');
-            list[i].children[3].classList.toggle('no-change');
-
             list.forEach(element => {
                 if( element != list[i]) {
                     element.classList.remove('focus');
-                    element.children[1].classList.add('bold');
-                    element.children[3].classList.remove('change');
-                    element.children[3].classList.add('no-change');
                 }
             });
         });
+    }
+    render(list, data, false)
+}
 
-        if( month ) {
+const render = (list, data, month) => {
+    if( month ) {
+        for( let i = 0; i < list.length; i++) {
             list[i].innerHTML = `
             <h4>${data[i].title}</h4>
-            <h2 class="bold"><span>&dollar;</span>${data[i].mount.month}</h2>
+            <h2><span>&dollar;</span>${data[i].mount.month}</h2>
             <div class='info'>
                 <p>${data[i].storage} Storage</p>
                 <p>${data[i].users} Users Allowed</p>
                 <p>Send up to ${data[i].send}</p>
             </div>
-            <button class="no-change">learn more</button>
-        `;
+            <button>learn more</button>
+            `;
         }
-        else {
+    }
+    else {
+        for( let i = 0; i < list.length; i++) {
             list[i].innerHTML = `
             <h4>${data[i].title}</h4>
-            <h2 class="bold"><span>&dollar;</span>${data[i].mount.year}</h2>
+            <h2><span>&dollar;</span>${data[i].mount.year}</h2>
             <div class='info'>
                 <p>${data[i].storage} Storage</p>
                 <p>${data[i].users} Users Allowed</p>
                 <p>Send up to ${data[i].send}</p>
             </div>
-            <button class="no-change">learn more</button>
+            <button>learn more</button>
         `;
         }
     }
 }
 
-reRender();
-styleCards(containerList, json.data, false);
+reset(containerList,json.data);
+styleCards(containerList, json.data);

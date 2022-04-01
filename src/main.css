@@ -97,15 +97,13 @@ h1 {
     transform: translateX(21px);
 }
 
-.bold {
-    color: var(--dark-grayish-blue);
-    font-size: 4rem;
-}
-
 h2 {
     display: flex;
     place-items: center;
     justify-content: center;
+    font-size: 4rem;
+    color: var(--dark-grayish-blue);
+    font-size: 4rem;
 }
 
 h2 span {
@@ -146,6 +144,15 @@ h2 span {
     border-bottom: 1px solid var(--light-grayish-blue);
 }
 
+.focus {
+    background-image: linear-gradient(135deg, hsl(236, 72%, 79%),hsl(237, 63%, 64%));
+    color: var(--very-light-grayish-blue);
+}
+
+.focus h2{
+    color: var(--very-light-grayish-blue);
+}
+
 button {
     margin-top: 1rem;
     border-radius: 4px;
@@ -154,37 +161,27 @@ button {
     padding-bottom: 0.6rem;
     cursor: pointer;
     margin-bottom: 0.2rem;
-}
-
-.no-change {
     color: var(--very-light-grayish-blue);
     background-image: linear-gradient(135deg, hsl(236, 72%, 79%),hsl(237, 63%, 64%));
     border: 1px solid var(--very-light-grayish-blue);
 }
 
-.no-change:hover {
+
+button:hover {
     border: 1px solid hsl(237, 63%, 64%);
     background-image: none;
     background-color: transparent;
     color: hsl(237, 63%, 64%);
 }
 
-.focus {
-    background-image: linear-gradient(135deg, hsl(236, 72%, 79%),hsl(237, 63%, 64%));
-    color: var(--very-light-grayish-blue);
-}
-
-.focus h2 {
-    font-size: 4rem;
-}
-
-.change {
+.focus button {
+    background-image: none;
     border: 1px solid var(--very-light-grayish-blue);
     background-color: var(--very-light-grayish-blue);
     color: hsl(237, 63%, 64%);
 }
 
-.change:hover {
+.focus button:hover {
     background-image: none;
     border: 1px solid var(--very-light-grayish-blue);
     background-color: transparent;
